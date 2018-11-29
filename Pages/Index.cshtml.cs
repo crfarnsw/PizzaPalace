@@ -9,9 +9,9 @@ namespace PizzaPalace.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
-
+            return Page();
         }
     }
 }
