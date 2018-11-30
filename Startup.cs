@@ -4,6 +4,7 @@ namespace PizzaPalace
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -30,6 +31,8 @@ namespace PizzaPalace
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
 
             var connection = @"Server=tcp:csi3450db.database.windows.net,1433;Initial Catalog=PizzaPalacedb;Persist Security Info=False;User ID=system;Password=PizzaPalace3450;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
             services.AddDbContext<PizzaPalacedbContext>(options => options.UseSqlServer(connection));
@@ -52,7 +55,9 @@ namespace PizzaPalace
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-
+            // IMPORTANT: This session call MUST go before UseMvc()
+            app.UseSession();
+            
             app.UseMvc();
         }
     }

@@ -18,11 +18,11 @@ namespace PizzaPalace.Pages.Customer
             _context = context;
         }
 
-        public IList<Customers> Customers { get;set; }
+        public IList<Models.Customer> Customer { get;set; }
 
         public async Task OnGetAsync()
         {
-            Customers = await _context.Customers.ToListAsync();
+            Customer = await _context.Customer.ToListAsync();
         }
     }
 }

@@ -10,6 +10,8 @@ using PizzaPalace.Models;
 
 namespace PizzaPalace.Pages.Customer
 {
+    using Customer = PizzaPalace.Models.Customer;
+
     public class EditModel : PageModel
     {
         private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
@@ -20,7 +22,7 @@ namespace PizzaPalace.Pages.Customer
         }
 
         [BindProperty]
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +31,9 @@ namespace PizzaPalace.Pages.Customer
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
 
-            if (Customers == null)
+            if (Customer == null)
             {
                 return NotFound();
             }
@@ -45,7 +47,7 @@ namespace PizzaPalace.Pages.Customer
                 return Page();
             }
 
-            _context.Attach(Customers).State = EntityState.Modified;
+            _context.Attach((Models.Customer)Customer).State = EntityState.Modified;
 
             try
             {
@@ -53,7 +55,7 @@ namespace PizzaPalace.Pages.Customer
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomersExists(Customers.CustomerId))
+                if (!CustomerExists(Customer.CustomerId))
                 {
                     return NotFound();
                 }
@@ -66,9 +68,9 @@ namespace PizzaPalace.Pages.Customer
             return RedirectToPage("./Index");
         }
 
-        private bool CustomersExists(int id)
+        private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.CustomerId == id);
+            return _context.Customer.Any(e => e.CustomerId == id);
         }
     }
 }

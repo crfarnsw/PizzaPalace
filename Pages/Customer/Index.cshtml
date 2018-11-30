@@ -14,37 +14,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].FirstName)
+                @Html.DisplayNameFor(model => model.Customer[0].FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].LastName)
+                @Html.DisplayNameFor(model => model.Customer[0].LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Email)
+                @Html.DisplayNameFor(model => model.Customer[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Password)
+                @Html.DisplayNameFor(model => model.Customer[0].Password)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Phone)
+                @Html.DisplayNameFor(model => model.Customer[0].Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].City)
+                @Html.DisplayNameFor(model => model.Customer[0].City)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Address)
+                @Html.DisplayNameFor(model => model.Customer[0].Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].State)
+                @Html.DisplayNameFor(model => model.Customer[0].State)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customers[0].ZipCode)
+                @Html.DisplayNameFor(model => model.Customer[0].ZipCode)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Customers) {
+@foreach (var item in Model.Customer) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

@@ -9,6 +9,8 @@ using PizzaPalace.Models;
 
 namespace PizzaPalace.Pages.Customer
 {
+    using Customer = PizzaPalace.Models.Customer;
+
     public class DetailsModel : PageModel
     {
         private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
@@ -18,7 +20,7 @@ namespace PizzaPalace.Pages.Customer
             _context = context;
         }
 
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,12 +29,13 @@ namespace PizzaPalace.Pages.Customer
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
 
-            if (Customers == null)
+            if (Customer == null)
             {
                 return NotFound();
             }
+            
             return Page();
         }
     }

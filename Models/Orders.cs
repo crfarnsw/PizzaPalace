@@ -15,7 +15,7 @@ namespace PizzaPalace.Models
         public int StoreId { get; set; }
         public DateTime? OrderDate { get; set; }
 
-        public Customers Customer { get; set; }
+        public Customer Customer { get; set; }
         public Store Store { get; set; }
         public ICollection<OrderItem> OrderItem { get; set; }
     }

@@ -8,21 +8,14 @@
 
 <form method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label asp-for="Customer.Email"></label>
+        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Customers.Email">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <span asp-validation-for="Customers.Email" class="text-danger"></span>
+        <label asp-for="Customer.Password"></label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-        <button type="submit" asp-page-handler="Way2">Way 2</button>
+    <button class="btn btn-primary" type="submit" asp-page-handler="First">Go!</button>
 </form>

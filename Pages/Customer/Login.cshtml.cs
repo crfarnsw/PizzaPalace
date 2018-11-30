@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using PizzaPalace.Models;
-
-namespace PizzaPalace.Pages.Customer
+﻿namespace PizzaPalace.Pages.Customer
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using PizzaPalace.Models;
+
     public class LoginModel : PageModel
     {
         private readonly PizzaPalacedbContext _context;
@@ -23,13 +23,13 @@ namespace PizzaPalace.Pages.Customer
         }
 
         [BindProperty]
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
         public ActionResult OnPostWay2(string email, string password)
         {
             // to do : return something
-            var customer = _context.Customers.FirstOrDefault(u => u.Email == email);
-
+            var customer = _context.Customer.FirstOrDefault(u => u.Email == email);
+            
             if (customer == null)
             {
                 return RedirectToPage("/Error");
@@ -38,9 +38,18 @@ namespace PizzaPalace.Pages.Customer
             return null;
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostFirstAsync(string email, string password)
         {
-            return RedirectToPage("www.google.com");
+            // to do : return something
+            var customer = _context.Customer.FirstOrDefault(u => u.Email == email);
+
+            if (customer == null)
+            {
+                return RedirectToPage("/Error");
+            }
+
+
+            return RedirectToPage("/Index");
         }
     }
 }

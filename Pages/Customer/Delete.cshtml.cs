@@ -9,6 +9,8 @@ using PizzaPalace.Models;
 
 namespace PizzaPalace.Pages.Customer
 {
+    using Customer = PizzaPalace.Models.Customer;
+
     public class DeleteModel : PageModel
     {
         private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
@@ -19,7 +21,7 @@ namespace PizzaPalace.Pages.Customer
         }
 
         [BindProperty]
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +30,9 @@ namespace PizzaPalace.Pages.Customer
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
 
-            if (Customers == null)
+            if (Customer == null)
             {
                 return NotFound();
             }
@@ -44,11 +46,11 @@ namespace PizzaPalace.Pages.Customer
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FindAsync(id);
+            Customer = await _context.Customer.FindAsync(id);
 
-            if (Customers != null)
+            if (Customer != null)
             {
-                _context.Customers.Remove(Customers);
+                _context.Customer.Remove((Models.Customer)Customer);
                 await _context.SaveChangesAsync();
             }
 

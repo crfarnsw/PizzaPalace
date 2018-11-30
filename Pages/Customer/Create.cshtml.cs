@@ -9,6 +9,8 @@ using PizzaPalace.Models;
 
 namespace PizzaPalace.Pages.Customer
 {
+    using Customer = PizzaPalace.Models.Customer;
+
     public class CreateModel : PageModel
     {
         private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
@@ -24,7 +26,7 @@ namespace PizzaPalace.Pages.Customer
         }
 
         [BindProperty]
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,7 +35,7 @@ namespace PizzaPalace.Pages.Customer
                 return Page();
             }
 
-            _context.Customers.Add(Customers);
+            _context.Customer.Add((Models.Customer)Customer);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

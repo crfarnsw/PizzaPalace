@@ -17,7 +17,7 @@ namespace PizzaPalace.Models
 
         public virtual DbSet<Beverage> Beverage { get; set; }
         public virtual DbSet<BeverageOrder> BeverageOrder { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<OrderItem> OrderItem { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Pizza> Pizza { get; set; }
@@ -69,7 +69,7 @@ namespace PizzaPalace.Models
                     .HasConstraintName("FK__Beverage___Order__03F0984C");
             });
 
-            modelBuilder.Entity<Customers>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustomerId);
 
