@@ -1,0 +1,27 @@
+﻿@page
+@model PizzaPalace.Pages.Order.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@{
+    var identity = this.User.Identity;
+    var name = identity.Name;
+}
+
+@foreach (var item in Model.Orders.Where(u => u.Customer.Email == name))
+{
+    <ul>
+        <li>
+            @item.Customer.Email
+        </li>
+        <li>
+            <a asp-page="./Details" asp-route-id="@item.OrderId">Edit</a> |</li>
+    </ul>
+}
+
+

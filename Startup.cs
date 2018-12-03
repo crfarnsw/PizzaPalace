@@ -1,6 +1,7 @@
 
 namespace PizzaPalace
 {
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -10,6 +11,7 @@ namespace PizzaPalace
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using PizzaPalace.Models;
+    using PizzaPalace.Services;
 
     public class Startup
     {
@@ -30,6 +32,21 @@ namespace PizzaPalace
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddAuthentication(options =>
+            //    {
+            //        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    }).AddCookie(options => { options.LoginPath = "/Login"; });
+            //services.AddMvc().AddRazorPagesOptions(options =>
+            //    {
+            //        options.Conventions.AuthorizeFolder("/");
+            //        options.Conventions.AllowAnonymousToPage("/Login");
+            //    });
+            services.AddAuthorization();
+            services.AddScoped<IUserService, UserService>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession();
@@ -55,7 +72,6 @@ namespace PizzaPalace
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            // IMPORTANT: This session call MUST go before UseMvc()
             app.UseSession();
             
             app.UseMvc();

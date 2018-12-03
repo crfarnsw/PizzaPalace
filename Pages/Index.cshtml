@@ -4,14 +4,29 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="row">
+@using Microsoft.AspNetCore.Authentication
 
+@{
+    var identity = this.User.Identity;
+    var name = identity.Name;
+    var isAuthenticated = identity.IsAuthenticated;
+}
+
+<div class="row">
     <div class="col-md-4">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h1 class="text-center">Welcome to Pizza Palace</h1>
         <p class="text-center">
-            <a asp-page="Customer/Create">Register</a> or <a asp-page="Customer/Login">Login</a> to order a pizza.
+            @if (isAuthenticated)
+            {
+                <a class="btn btn-outline-primary" asp-page="Order/Create">Create an Order</a>
+            }
+            else
+            {
+                <a asp-page="Customer/Create">Register</a>
+                <a asp-page="/Login">Login</a>
+            }
         </p>
     </div>
     <div class="col-md-4">

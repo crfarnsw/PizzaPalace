@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    var identity = this.User.Identity;
+    var name = identity.Name;
+    var isAuthenticated = identity.IsAuthenticated;
+}
+
+@if (isAuthenticated)
+{
+    <div class="mt-1 mb-1 mr-1 text-dark">Welcome @name</div>
+    <form class="form-inline" method="post" asp-controller="Login" asp-action="Logout">
+        <button class="btn btn-outline-success mt-1 mb-1 mr-1">Logout</button>
+    </form>
+}
+else
+{
+    <form class="form-inline" method="post" asp-controller="Login" asp-action="Login">
+        <button type="submit" class="btn btn-link" asp-page="/Customer/Create">Register</button>
+        <button type="submit" class="btn btn-link" asp-page="/Login">Login</button>
+    </form>
+}

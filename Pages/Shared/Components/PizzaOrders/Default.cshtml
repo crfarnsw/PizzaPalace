@@ -1,0 +1,14 @@
+﻿@model PizzaPalace.Pages.Shared.Components.PizzaOrders.DefaultModel
+
+<h3>Pizzas</h3>
+<form method="post">
+    <ul>
+        @foreach (var pizza in Model.pizzas)
+        {
+            <li>
+                @pizza.PizzaName 
+                <input type="submit" asp-for="data.id" class="btn btn-outline-light" value="[+]" name="Command" data-pizza-id="@pizza.PizzaId" />
+            </li>
+        }
+    </ul>
+</form>

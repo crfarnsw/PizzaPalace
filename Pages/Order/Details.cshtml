@@ -1,0 +1,109 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Http
+@model PizzaPalace.Pages.Order.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Order Details</h2>
+<div class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-columns">
+                    <div class="card bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Add a Pizza</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            @{
+                                var orderId = Model.Orders.OrderId;
+                                var itemId = Model.Orders.OrderItem.FirstOrDefault().OrderItemId;
+                            }
+                            <a class="btn btn-outline-success text-white" asp-page="/PizzaOrder/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@itemId">+ Add Pizza</a>
+                        </div>
+                    </div>
+                    <div hidden="hidden" class="card bg-dark">
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Beverage</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <a class="btn btn-outline-success">+ Add Beverage</a>
+                        </div>
+                    </div>
+                    <div hidden="hidden" class="card bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Beverage</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div hidden="hidden" class="card bg-dark">
+                        <div class="card-body">
+                        </div>
+                    </div>
+                    <div class="card bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">Add a Side</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <a class="btn btn-outline-success">+ Add Side</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-dark">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Pizza items:
+                        </h5>
+                        @foreach (var pizzaOrder in @Model.OrderItem.PizzaOrder)
+                        {
+                            <ul>
+                                <li>
+                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@*<div class="col-md-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Orders.OrderId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>*@
+
+<div hidden="hidden" class="col-md-4">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders.OrderItem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orders.OrderItem)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orders.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders.Customer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orders.Customer.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders.Store)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orders.Store.StoreId)
+        </dd>
+    </dl>
+</div>
+
+

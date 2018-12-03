@@ -1,0 +1,9 @@
+﻿@model IEnumerable<PizzaPalace.Models.Pizza>
+
+<h3>Pizzas</h3>
+<ul>
+    @foreach (var pizza in Model)
+    {
+        <li>@pizza.PizzaName <a class="btn btn-primary" asp-controller="Pizza" asp-action="Add" asp-route-id="@pizza.PizzaId">Add Item</a></li>
+    }
+</ul>
