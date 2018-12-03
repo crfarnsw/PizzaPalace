@@ -16,6 +16,8 @@ namespace PizzaPalace.Pages.PizzaOrder
         public int _orderId;
         public int _orderItemId;
 
+        public string _redirectUrl;
+
         private readonly PizzaPalacedbContext _context;
 
         public CreateModel(PizzaPalacedbContext context)
@@ -27,7 +29,8 @@ namespace PizzaPalace.Pages.PizzaOrder
         {
             _orderId = OrderId;
             _orderItemId = OrderItemId;
-            //ViewData["OrderItemId"] = _context.OrderItem.Find(OrderItemId).OrderItemId;
+            _redirectUrl = $"/Order/Details?OrderId={OrderId}&OrderItemId={OrderItemId}";
+
             ViewData["PizzaId"] = new SelectList(_context.Pizza, "PizzaId", "PizzaName");
             return Page();
         }

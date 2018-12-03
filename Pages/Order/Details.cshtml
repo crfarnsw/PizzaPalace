@@ -54,19 +54,24 @@
                     </div>
                 </div>
                 <div class="card bg-dark">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">Items</div>
                     <div class="card-body">
                         <h5 class="card-title">
                             Pizza items:
                         </h5>
-                        @foreach (var pizzaOrder in @Model.OrderItem.PizzaOrder)
-                        {
-                            <ul>
-                                <li>
-                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName
-                                </li>
-                            </ul>
-                        }
+                        <ol>
+                            @foreach (var pizzaOrder in @Model.OrderItem.PizzaOrder)
+                            {
+                            <li>
+                                @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName
+                                <a class="btn btn-outline-info" href="#">Add Topping</a>
+                                <ol>
+                                    
+                                </ol>
+                            </li>
+                            }
+                        </ol>
+
                     </div>
                 </div>
             </div>

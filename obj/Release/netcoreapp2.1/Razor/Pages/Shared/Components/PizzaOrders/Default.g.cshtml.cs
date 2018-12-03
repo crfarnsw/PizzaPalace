@@ -55,7 +55,7 @@ using PizzaPalace;
             WriteLiteral("\r\n<h3>Pizzas</h3>\r\n");
             EndContext();
             BeginContext(88, 337, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc592a8128b54a859a1f2a6615493ae7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f82d4f5592814956982799809e0f7fe8", async() => {
                 BeginContext(108, 12, true);
                 WriteLiteral("\r\n    <ul>\r\n");
                 EndContext();
@@ -79,7 +79,7 @@ using PizzaPalace;
                 WriteLiteral(" \r\n                ");
                 EndContext();
                 BeginContext(246, 129, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "07a85cf5b8df48c79a2e90087306af57", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "839ee6edcd344d6bac4b5792de71adac", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

@@ -49,10 +49,9 @@ namespace PizzaPalace.Controllers
                             };
 
             var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, customer.FirstName));
-            claims.Add(new Claim(ClaimTypes.Email, customer.Email));
+            claims.Add(new Claim(ClaimTypes.Name, customer.Email));
 
-            ClaimsIdentity identity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
 

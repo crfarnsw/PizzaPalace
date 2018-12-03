@@ -89,7 +89,7 @@ using PizzaPalace;
             WriteLiteral("</div>\r\n    ");
             EndContext();
             BeginContext(346, 176, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18125bb8dd404089b250c55d9f603886", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "878f2ecc13e942d5b2b92881f09100df", async() => {
                 BeginContext(429, 86, true);
                 WriteLiteral("\r\n        <button class=\"btn btn-outline-success mt-1 mb-1 mr-1\">Logout</button>\r\n    ");
                 EndContext();
@@ -128,12 +128,12 @@ else
             WriteLiteral("    ");
             EndContext();
             BeginContext(540, 278, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a6e2835b44df46cfa37ea2b785dba5d4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4ff232d0b844fb2a0001937503f7644", async() => {
                 BeginContext(622, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(632, 88, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11e836f50709462f9fe29b3f0adc77f4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3049d79618ba43cda45827e1675801b7", async() => {
                     BeginContext(703, 8, true);
                     WriteLiteral("Register");
                     EndContext();
@@ -157,7 +157,7 @@ else
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(730, 75, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ee38bea7a28456ba3dc4a23c64316a9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b274eecdc4e40e5876bcaf0b72ee137", async() => {
                     BeginContext(791, 5, true);
                     WriteLiteral("Login");
                     EndContext();

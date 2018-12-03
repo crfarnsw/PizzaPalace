@@ -88,7 +88,7 @@ using PizzaPalace;
             WriteLiteral("\r\n        </li>\r\n        <li>\r\n            ");
             EndContext();
             BeginContext(416, 61, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3726f513c59644b6893091c61b97903a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c2374cab457455a88fa9abdcd2140c6", async() => {
                 BeginContext(469, 4, true);
                 WriteLiteral("Edit");
                 EndContext();

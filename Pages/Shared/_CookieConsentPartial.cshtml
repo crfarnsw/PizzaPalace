@@ -11,7 +11,7 @@
     <nav id="cookieConsent" class="navbar " role="alert">
         <div class="container">
             <div class="navbar">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
                     <span class="sr-only">Toggle cookie consent banner</span>
                 </button>
                 <span class="navbar-brand"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
@@ -22,7 +22,7 @@
                 </p>
                 <div class="">
                     <a asp-page="/Privacy" class="btn btn-info">Learn More</a>
-                    <button type="button" class="btn " data-cookie-string="@cookieString">Accept</button>
+                    <button type="button" class="btn btn-success" data-cookie-string="@cookieString">Accept Cookies</button>
                 </div>
             </div>
         </div>

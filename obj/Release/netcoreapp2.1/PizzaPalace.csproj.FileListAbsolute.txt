@@ -54,3 +54,5 @@ C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\PizzaPalace.Vie
 C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\PizzaPalace.dll
 C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\PizzaPalace.pdb
 C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\PizzaPalace.csproj.CopyComplete
+C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\pink\Source\Repos\PizzaPalace\obj\Release\netcoreapp2.1\Razor\Pages\Logout.g.cshtml.cs
