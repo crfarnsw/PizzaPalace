@@ -14,19 +14,17 @@ namespace PizzaPalace.Services
     public class UserService : IUserService
     {
         private PizzaPalacedbContext context = new PizzaPalacedbContext();
-        const string filename = "users.json";
-        IList<Customer> users = new List<Customer>();
+        IList<Customer> customers = new List<Customer>();
 
         public UserService()
         {
-            this.users = context.Customer.ToList();
+            customers = context.Customer.ToList();
         }
 
-        public Customer GetByName(string name)
+        public Customer GetByName(string Email)
         {
-            var q = from x in this.users where x.Email == name select x;
+            var q = from customer in customers where customer.Email == Email select customer;
             var user = q.FirstOrDefault();
-
             return user;
         }
     }

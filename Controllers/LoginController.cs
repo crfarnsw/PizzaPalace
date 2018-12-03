@@ -2,6 +2,7 @@
 namespace PizzaPalace.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -47,9 +48,12 @@ namespace PizzaPalace.Controllers
                                 ExpiresUtc = DateTime.UtcNow.AddMinutes(5),
                             };
 
-            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
+            var claims = new List<Claim>();
+            claims.Add(new Claim(ClaimTypes.Name, customer.FirstName));
+            claims.Add(new Claim(ClaimTypes.Email, customer.Email));
 
+            ClaimsIdentity identity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
 
             return LocalRedirect(returnUrl);
