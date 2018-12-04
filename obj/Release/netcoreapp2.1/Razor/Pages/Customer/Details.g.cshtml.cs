@@ -239,7 +239,7 @@ using PizzaPalace;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1908, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8b7ed8b54d74e139d90d2c392bda172", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2636b9b98b004077a23e62ab4f880f91", async() => {
                 BeginContext(1971, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -274,7 +274,7 @@ using PizzaPalace;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1987, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ef366654cf545f1b99a895dab4c1b33", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8df4d65eb511492799b94336d75681b1", async() => {
                 BeginContext(2009, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

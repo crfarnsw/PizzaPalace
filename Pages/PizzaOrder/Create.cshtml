@@ -6,6 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 <div class="row">
+    <div class="col"></div>
     <div class="col-md-8">
         <div class="card bg-dark">
             <div class="card-body">
@@ -21,22 +22,17 @@
                         <select asp-for="PizzaOrder.PizzaId" class="form-control" asp-items="ViewBag.PizzaId"></select>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-outline-secondary" href="@Model._redirectUrl">Back to Order Details</a>
                         <input type="submit" value="Add to order" class="btn btn-primary" />
+                        <a class="btn btn-outline-secondary float-right" href="@Model._redirectUrl">Back to Order Details</a>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-    </div>
+    <div class="col"></div>
 </div>
 
-<div class="row">
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

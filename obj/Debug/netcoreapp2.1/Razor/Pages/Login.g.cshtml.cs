@@ -91,7 +91,7 @@ using PizzaPalace;
             WriteLiteral("</div>\r\n    ");
             EndContext();
             BeginContext(361, 176, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3af1e1add48041a08a804322b4cf9f9c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "91aa4e6d8dbd48c2ace42893573ca218", async() => {
                 BeginContext(444, 86, true);
                 WriteLiteral("\r\n        <button class=\"btn btn-outline-success mt-1 mb-1 mr-1\">Logout</button>\r\n    ");
                 EndContext();
@@ -130,7 +130,7 @@ else
             WriteLiteral("    <div class=\"row\">\r\n        <div class=\"col\">\r\n        </div>\r\n        <div class=\"col-md-4 \">\r\n            <h1>\r\n                Login\r\n            </h1>\r\n            ");
             EndContext();
             BeginContext(722, 702, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31037090458f41779bcd58349dfeaae9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06a92054fa43423b9580f2265153dbfb", async() => {
                 BeginContext(784, 633, true);
                 WriteLiteral(@"
                 <div class=""form-group"">

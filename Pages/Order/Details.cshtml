@@ -14,7 +14,7 @@
                 <h5>Pizzas</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">Pizza is a savory dish of Italian origin, consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and various other ingredients... <a href="https://en.wikipedia.org/wiki/Pizza">Wikipedia</a> </p>
+                <p class="card-text">Pizza is a savory dish of Italian origin, consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and various other ingredients... </p><a href="https://en.wikipedia.org/wiki/Pizza">Wikipedia</a>
                 @{
                     var orderId = Model.Orders.OrderId;
                     var orderItemId = Model.Orders.OrderItem.FirstOrDefault().OrderItemId;
@@ -31,7 +31,7 @@
                 <h5>Beverages</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">A drink is a liquid intended for human consumption. In addition to their basic function of satisfying thirst, drinks play important roles in human culture.... <a href="https://en.wikipedia.org/wiki/Drink">Wikipedia.</a> </p>
+                <p class="card-text">A drink is a liquid intended for human consumption. In addition to their basic function of satisfying thirst, drinks play important roles in human culture....  </p> <a href="https://en.wikipedia.org/wiki/Drink">Wikipedia</a>
             </div>
             <div class="card-footer">
                 <a class="btn btn-outline-success text-white" asp-page="/BeverageOrders/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId">Add Beverage</a>
@@ -44,7 +44,7 @@
                 <h5>Sides</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">A side dish, sometimes referred to as a side order, side item, or simply a side, is a food item that accompanies the entrée or main course at a meal. <a href="https://en.wikipedia.org/wiki/Side_dish">Wikipedia</a></p>
+                <p class="card-text">A side dish, sometimes referred to as a side order, side item, or simply a side, is a food item that accompanies the entrée or main course at a meal. </p> <a href="https://en.wikipedia.org/wiki/Side_dish">Wikipedia</a>
             </div>
             <div class="card-footer">
                 <a class="btn btn-outline-success text-white" asp-page="/SideOrders/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId">Add Side</a>
@@ -57,7 +57,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card bg-dark">
-            <div class="card-header">Items</div>
+            <div class="card-header">Cart Items</div>
             <div class="card-body">
                 @if (Model.PizzaOrder.Count() == 0)
                 {
@@ -70,9 +70,13 @@
                         {
                             <li class="list-group-item align-items-start bg-dark">
                                 <p>
-                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName - 
+                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName -
                                     @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaPrice.GetValueOrDefault().ToString("C")
-                                    <a class="btn btn-outline-primary btn-sm float-right" asp-page="/PizzaToppings/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaOrderId="@pizzaOrder.PizzaOrderId">Add Topping</a>
+                                    <span class="float-right">
+                                        <a class="btn btn-outline-primary btn-sm " asp-page="/PizzaToppings/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaOrderId="@pizzaOrder.PizzaOrderId">Add Topping</a>
+                                        <a class="btn btn-outline-danger btn-sm" asp-page="/PizzaOrder/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaOrderId="@pizzaOrder.PizzaOrderId">Remove</a>
+
+                                    </span>
                                 </p>
 
                                 <ul class="list-group">
@@ -84,7 +88,7 @@
                                             @Model.Toppings.Find(u => u.ToppingId == topping.ToppingId).ToppingPrice.GetValueOrDefault().ToString("C")
                                         </text>
                                         <span>
-                                            <a class="btn btn-outline-danger btn-sm float-right" asp-page="/PizzaToppings/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaToppingId="@topping.PizzaToppingId">Delete</a>
+                                            <a class="btn btn-outline-danger btn-sm float-right" asp-page="/PizzaToppings/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaToppingId="@topping.PizzaToppingId">Remove</a>
                                         </span>
                                     </li>
                                     }
@@ -94,10 +98,11 @@
                         @foreach (var beverageOrder in @Model.BeverageOrders)
                         {
                             <li class="list-group-item bg-dark">
-                                @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeverageName
-
-                                @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeveragePrice.GetValueOrDefault().ToString("C")
-                                <a class="btn btn-outline-danger btn-sm float-right" asp-page="/BeverageOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-BeverageOrderId="@beverageOrder.BeverageOrderId">Delete</a>
+                                <p>
+                                    @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeverageName -
+                                    @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeveragePrice.GetValueOrDefault().ToString("C")
+                                    <a class="btn btn-outline-danger btn-sm float-right" asp-page="/BeverageOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-BeverageOrderId="@beverageOrder.BeverageOrderId">Remove</a>
+                                </p>
                             </li>
                         }
                         @foreach (var sideOrder in @Model.SideOrders)
@@ -105,7 +110,7 @@
                             <li class="list-group-item bg-dark">
                                 @Model.Sides.Find(s => s.SideId == sideOrder.SideId).SideName - 
                                 @Model.Sides.Find(s => s.SideId == sideOrder.SideId).SidePrice.GetValueOrDefault().ToString("C")
-                                <a class="btn btn-outline-danger btn-sm float-right" asp-page="/SideOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-SideOrderId="@sideOrder.SideOrderId">Delete</a>
+                                <a class="btn btn-outline-danger btn-sm float-right" asp-page="/SideOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-SideOrderId="@sideOrder.SideOrderId">Remove</a>
                             </li>
                         }
                     </ol>

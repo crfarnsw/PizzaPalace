@@ -5,31 +5,19 @@
     ViewData["Title"] = "Delete";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>PizzaOrder</h4>
+    <h3>Are you sure you want to delete this?</h3>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PizzaOrder.OrderItem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PizzaOrder.OrderItem.OrderItemId)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.PizzaOrder.Pizza)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PizzaOrder.Pizza.PizzaId)
+            @Html.DisplayFor(model => model.PizzaOrder.Pizza.PizzaName)
         </dd>
     </dl>
-    
     <form method="post">
         <input type="hidden" asp-for="PizzaOrder.PizzaOrderId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-default" />
     </form>
 </div>

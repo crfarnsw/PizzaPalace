@@ -70,7 +70,7 @@ using PizzaPalace;
             WriteLiteral(" ");
             EndContext();
             BeginContext(142, 109, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3acd69c6abfc47a4a8f1169ac051181f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efdfe564ed1147a3a978f35f61a1b7db", async() => {
                 BeginContext(239, 8, true);
                 WriteLiteral("Add Item");
                 EndContext();

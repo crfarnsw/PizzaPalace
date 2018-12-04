@@ -23,16 +23,11 @@ namespace PizzaPalace.Pages.PizzaOrder
         [BindProperty]
         public PizzaOrder PizzaOrder { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int OrderId, int OrderItemId, int PizzaOrderId)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             PizzaOrder = await _context.PizzaOrder
                 .Include(p => p.OrderItem)
-                .Include(p => p.Pizza).FirstOrDefaultAsync(m => m.PizzaOrderId == id);
+                .Include(p => p.Pizza).FirstOrDefaultAsync(m => m.PizzaOrderId == PizzaOrderId);
 
             if (PizzaOrder == null)
             {
@@ -41,14 +36,9 @@ namespace PizzaPalace.Pages.PizzaOrder
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int OrderId, int OrderItemId, int PizzaOrderId)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            PizzaOrder = await _context.PizzaOrder.FindAsync(id);
+            PizzaOrder = await _context.PizzaOrder.FindAsync(PizzaOrderId);
 
             if (PizzaOrder != null)
             {
@@ -56,7 +46,7 @@ namespace PizzaPalace.Pages.PizzaOrder
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return Redirect($"/Order/Details?OrderId={OrderId}&OrderItemId={OrderItemId}");
         }
     }
 }
