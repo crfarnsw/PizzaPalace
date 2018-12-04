@@ -21,7 +21,7 @@ namespace PizzaPalace.Controllers
 
         public LoginController(IUserService userService) => this.userService = userService;
 
-        public Models.Customer Customer { get; set; }
+        public Customer Customer { get; set; }
 
         // GET: Login
         public ActionResult Index()
@@ -37,7 +37,9 @@ namespace PizzaPalace.Controllers
 
             var customer = userService.GetByName(data.Email);
 
-            if (customer.Password != data.Password)
+            // check a password
+            bool validPassword = BCrypt.Net.BCrypt.Verify(data.Password, customer.Password);
+            if (!validPassword)
             {
                 return LocalRedirect(returnUrl);
             }
@@ -48,8 +50,10 @@ namespace PizzaPalace.Controllers
                                 ExpiresUtc = DateTime.UtcNow.AddMinutes(5),
                             };
 
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, customer.Email));
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, customer.Email)
+            };
 
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -59,13 +63,11 @@ namespace PizzaPalace.Controllers
         }
 
         [HttpPost("~/logout")]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var returnUrl = "/";
-
-            return LocalRedirect(returnUrl);
+            return LocalRedirect("/Login");
         }
     }
 }

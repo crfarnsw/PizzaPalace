@@ -1,25 +1,4 @@
-﻿@*@page
-    @model PizzaPalace.Pages.LoginModel
-    @{
-        ViewData["Title"] = "Login";
-        Layout = "~/Pages/Shared/_Layout.cshtml";
-    }
-
-    @using Microsoft.AspNetCore.Authorization
-    @inject IAuthorizationService AuthorizationService
-
-    <h2>Login</h2>
-
-    <p>Login using form below:</p>
-    <form method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        Username: <input asp-for="data.Email" value="cfarns01@gmail.com" /><br />
-        Password: <input asp-for="data.Password" value="123456" /><br />
-        <input type="submit" value="Login" />
-        @Html.AntiForgeryToken()
-    </form>*@
-
-@page
+﻿@page
 @model PizzaPalace.Pages.LoginModel
 @{
     ViewData["Title"] = "Login";
@@ -41,9 +20,26 @@
 }
 else
 {
-    <form class="form-inline" method="post" asp-controller="Login" asp-action="Login">
-        <input class="form-control mt-1 mb-1 mr-1 bg-light" name="Email" placeholder="Email" required>
-        <input class="form-control mt-1 mb-1 mr-1 bg-light" type="password" name="Password" placeholder="password" required>
-        <button class="btn btn-outline-success mt-1 mb-1 mr-1">Login</button>
-    </form>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-md-4 ">
+            <h1>
+                Login
+            </h1>
+            <form method="post" asp-controller="Login" asp-action="Login">
+                <div class="form-group">
+                    <label for="Email">Email address</label>
+                    <input class="form-control mt-1 mb-1 mr-1 bg-light" name="Email" id="Email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input class="form-control mt-1 mb-1 mr-1 bg-light" type="password" name="Password" placeholder="password" required>
+                </div>
+                <button class="btn btn-outline-success mt-1 mb-1 mr-1">Login</button>
+            </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
 }

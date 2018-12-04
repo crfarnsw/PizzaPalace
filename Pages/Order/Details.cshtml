@@ -1,5 +1,4 @@
 ﻿@page
-
 @using Microsoft.AspNetCore.Http
 @model PizzaPalace.Pages.Order.DetailsModel
 
@@ -7,108 +6,120 @@
     ViewData["Title"] = "Details";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
 <h2>Order Details</h2>
 <div class="row">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card-columns">
-                    <div class="card bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Add a Pizza</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            @{
-                                var orderId = Model.Orders.OrderId;
-                                var itemId = Model.Orders.OrderItem.FirstOrDefault().OrderItemId;
-                            }
-                            <a class="btn btn-outline-success text-white" asp-page="/PizzaOrder/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@itemId">+ Add Pizza</a>
-                        </div>
-                    </div>
-                    <div hidden="hidden" class="card bg-dark">
-                        <div class="card-body">
-                        </div>
-                    </div>
-                    <div class="card bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Add Beverage</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <a class="btn btn-outline-success">+ Add Beverage</a>
-                        </div>
-                    </div>
-                    <div hidden="hidden" class="card bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Add Beverage</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                    <div hidden="hidden" class="card bg-dark">
-                        <div class="card-body">
-                        </div>
-                    </div>
-                    <div class="card bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Add a Side</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <a class="btn btn-outline-success">+ Add Side</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-dark">
-                    <div class="card-header">Items</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Pizza items:
-                        </h5>
-                        <ol>
-                            @foreach (var pizzaOrder in @Model.OrderItem.PizzaOrder)
-                            {
-                            <li>
-                                @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName
-                                <a class="btn btn-outline-info" href="#">Add Topping</a>
-                                <ol>
-                                    
-                                </ol>
-                            </li>
-                            }
-                        </ol>
-
-                    </div>
-                </div>
+    <div class="col-md-4">
+        <div class="card bg-dark" style="height:321px;">
+            <div class="card-header">
+                <h5>Pizzas</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Pizza is a savory dish of Italian origin, consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and various other ingredients... <a href="https://en.wikipedia.org/wiki/Pizza">Wikipedia</a> </p>
+                @{
+                    var orderId = Model.Orders.OrderId;
+                    var orderItemId = Model.Orders.OrderItem.FirstOrDefault().OrderItemId;
+                }
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-success text-white" asp-page="/PizzaOrder/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId">Add Pizza</a>
             </div>
         </div>
     </div>
-@*<div class="col-md-4">
-    <a asp-page="./Edit" asp-route-id="@Model.Orders.OrderId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>*@
+    <div class="col-md-4">
+        <div class="card bg-dark"  style="height:321px;">
+            <div class="card-header">
+                <h5>Beverages</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">A drink is a liquid intended for human consumption. In addition to their basic function of satisfying thirst, drinks play important roles in human culture.... <a href="https://en.wikipedia.org/wiki/Drink">Wikipedia.</a> </p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-success text-white" asp-page="/BeverageOrders/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId">Add Beverage</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark"  style="height:321px;">
+            <div class="card-header">
+                <h5>Sides</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">A side dish, sometimes referred to as a side order, side item, or simply a side, is a food item that accompanies the entrée or main course at a meal. <a href="https://en.wikipedia.org/wiki/Side_dish">Wikipedia</a></p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-success text-white" asp-page="/SideOrders/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId">Add Side</a>
 
-<div hidden="hidden" class="col-md-4">
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Orders.OrderItem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Orders.OrderItem)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Orders.OrderDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Orders.OrderDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Orders.Customer)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Orders.Customer.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Orders.Store)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Orders.Store.StoreId)
-        </dd>
-    </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-dark">
+            <div class="card-header">Items</div>
+            <div class="card-body">
+                @if (Model.PizzaOrder.Count() == 0)
+                {
+                    <span>Nothing Here!</span>
+                }
+                else
+                {
+                    <ol class="list-group ">
+                        @foreach (var pizzaOrder in @Model.PizzaOrder)
+                        {
+                            <li class="list-group-item align-items-start bg-dark">
+                                <p>
+                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaName - 
+                                    @Model.Pizza.Find(u => u.PizzaId == pizzaOrder.PizzaId).PizzaPrice.GetValueOrDefault().ToString("C")
+                                    <a class="btn btn-outline-primary btn-sm float-right" asp-page="/PizzaToppings/Create" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaOrderId="@pizzaOrder.PizzaOrderId">Add Topping</a>
+                                </p>
+
+                                <ul class="list-group">
+                                    @foreach (var topping in pizzaOrder.PizzaToppings)
+                                    {
+                                    <li class="list-group-item bg-dark">
+                                        <text>
+                                            @Model.Toppings.Find(u => u.ToppingId == topping.ToppingId).ToppingName.ToUpper() -
+                                            @Model.Toppings.Find(u => u.ToppingId == topping.ToppingId).ToppingPrice.GetValueOrDefault().ToString("C")
+                                        </text>
+                                        <span>
+                                            <a class="btn btn-outline-danger btn-sm float-right" asp-page="/PizzaToppings/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-PizzaToppingId="@topping.PizzaToppingId">Delete</a>
+                                        </span>
+                                    </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @foreach (var beverageOrder in @Model.BeverageOrders)
+                        {
+                            <li class="list-group-item bg-dark">
+                                @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeverageName
+
+                                @Model.Beverages.Find(u => u.BeverageId == beverageOrder.BeverageId).BeveragePrice.GetValueOrDefault().ToString("C")
+                                <a class="btn btn-outline-danger btn-sm float-right" asp-page="/BeverageOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-BeverageOrderId="@beverageOrder.BeverageOrderId">Delete</a>
+                            </li>
+                        }
+                        @foreach (var sideOrder in @Model.SideOrders)
+                        {
+                            <li class="list-group-item bg-dark">
+                                @Model.Sides.Find(s => s.SideId == sideOrder.SideId).SideName - 
+                                @Model.Sides.Find(s => s.SideId == sideOrder.SideId).SidePrice.GetValueOrDefault().ToString("C")
+                                <a class="btn btn-outline-danger btn-sm float-right" asp-page="/SideOrders/Delete" asp-route-OrderId="@orderId" asp-route-OrderItemId="@orderItemId" asp-route-SideOrderId="@sideOrder.SideOrderId">Delete</a>
+                            </li>
+                        }
+                    </ol>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-
+@section scripts{
+    <script>
+        $(document).ready(function ($) {
+            // standard on load code goes here with $ prefix
+            // note: the $ is setup inside the anonymous function of the ready command
+        });
+    </script>
+}

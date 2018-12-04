@@ -1,0 +1,24 @@
+﻿@page
+@model PizzaPalace.Pages.SideOrders.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Are you sure you want to remove this item?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SideOrder.Side)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SideOrder.Side.SideName)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="SideOrder.SideOrderId" />
+        <input type="submit" value="Remove" class="btn btn-danger" />
+    </form>
+</div>

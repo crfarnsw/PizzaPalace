@@ -15,7 +15,6 @@ namespace PizzaPalace.Pages.PizzaOrder
     {
         public int _orderId;
         public int _orderItemId;
-
         public string _redirectUrl;
 
         private readonly PizzaPalacedbContext _context;

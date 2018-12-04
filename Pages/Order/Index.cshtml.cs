@@ -19,12 +19,15 @@ namespace PizzaPalace.Pages.Order
         }
 
         public IList<Orders> Orders { get;set; }
+        public IList<OrderItem> OrderItem { get;set; }
 
         public async Task OnGetAsync()
         {
             Orders = await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Store).ToListAsync();
+
+            OrderItem = await _context.OrderItem.ToListAsync();
         }
     }
 }

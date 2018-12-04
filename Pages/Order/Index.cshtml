@@ -5,23 +5,36 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
 @{
     var identity = this.User.Identity;
     var name = identity.Name;
 }
 
-@foreach (var item in Model.Orders.Where(u => u.Customer.Email == name))
-{
-    <ul>
-        <li>
-            @item.Customer.Email
-        </li>
-        <li>
-            <a asp-page="./Details" asp-route-id="@item.OrderId">Edit</a> |</li>
-    </ul>
-}
+<h2 >Orders for @name</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                View
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders.Where(u => u.Customer.Email == name))
+        {
+            <tr>
+                <td>
+                    @item.OrderDate
+                </td>
+                <td>
+                    <a class="" asp-page="./Details" asp-route-OrderId="@item.OrderId" asp-route-OrderItemId="@Model.OrderItem.FirstOrDefault(u=>u.OrderId==item.OrderId).OrderItemId">View Order</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 

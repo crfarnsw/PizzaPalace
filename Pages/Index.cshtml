@@ -13,7 +13,7 @@
 }
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
     </div>
     <div class="col-md-6">
         <h1 class="text-center">Welcome to Pizza Palace</h1>
@@ -21,14 +21,15 @@
             @if (isAuthenticated)
             {
                 <a class="btn btn-outline-primary" asp-page="Order/Create">Create an Order</a>
+                <a class="btn btn-outline-secondary" asp-page="Order/Index">Previous Orders</a>
             }
             else
             {
-                <a asp-page="Customer/Create">Register</a>
-                <a asp-page="/Login">Login</a>
+                <a  class="btn btn-outline-primary"  asp-page="Customer/Create">Register</a>
+                <a class="btn btn-outline-secondary"  asp-page="/Login">Login</a>
             }
         </p>
     </div>
-    <div class="col-md-4">
+    <div class="col">
     </div>
 </div>

@@ -1,0 +1,30 @@
+﻿@page
+@model PizzaPalace.Pages.SideOrders.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h4>SideOrder</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SideOrder.SideId" class="control-label">Choose a side</label>
+                <select asp-for="SideOrder.SideId" class="form-control" asp-items="ViewBag.SideId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SideOrder.OrderItemId" hidden="hidden" class="control-label"></label>
+                <input asp-for="SideOrder.OrderItemId" hidden="hidden" class="form-control" value="@Model._orderItemId" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

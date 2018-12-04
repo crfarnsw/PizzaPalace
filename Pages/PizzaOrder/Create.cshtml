@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model PizzaPalace.Pages.PizzaOrder.CreateModel
 
 @{
@@ -21,8 +21,8 @@
                         <select asp-for="PizzaOrder.PizzaId" class="form-control" asp-items="ViewBag.PizzaId"></select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Add to order" class="btn btn-outline-primary" />
-                        <a  class="btn btn-secondary" href="@Model._redirectUrl">Back to Order Details</a>
+                        <a class="btn btn-outline-secondary" href="@Model._redirectUrl">Back to Order Details</a>
+                        <input type="submit" value="Add to order" class="btn btn-primary" />
                     </div>
                 </form>
             </div>

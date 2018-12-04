@@ -21,10 +21,20 @@ namespace PizzaPalace.Pages.Order
             _context = context;
         }
 
+        public IList<Orders> OrdersList { get; set; }
+
         public Orders Orders { get; set; }
         public OrderItem OrderItem { get; set; }
+
         public List<Pizza> Pizza { get; set; }
-        public IList<Orders> OrdersList { get; set; }
+        public List<PizzaOrder> PizzaOrder { get; set; }
+        public List<Toppings> Toppings { get; set; }
+
+        public List<Beverage> Beverages { get; set; }
+        public List<BeverageOrder> BeverageOrders { get; set; }
+
+        public List<Side> Sides { get; set; }
+        public List<SideOrder> SideOrders { get; set; }
 
         public string name { get; set; }
 
@@ -34,7 +44,7 @@ namespace PizzaPalace.Pages.Order
             {
                 return NotFound();
             }
-            
+
             var identity = User.Identity;
             name = identity.Name;
 
@@ -44,16 +54,28 @@ namespace PizzaPalace.Pages.Order
                 .Include(o => o.Store).FirstOrDefaultAsync(m => m.OrderId == OrderId);
 
             OrderItem = await _context.OrderItem
-                            .Include(o => o.PizzaOrder)
-                            .Include(o => o.BeverageOrder)
-                            .Include(o => o.SideOrder).FirstOrDefaultAsync(m => m.OrderId == OrderId);
+                .Include(o => o.PizzaOrder)
+                .Include(o => o.BeverageOrder)
+                .Include(o => o.SideOrder).FirstOrDefaultAsync(m => m.OrderId == OrderId);
 
             Pizza = await _context.Pizza.ToListAsync();
+
+            PizzaOrder = await _context.PizzaOrder
+                .Include(p => p.PizzaToppings)
+                .Where(p => p.OrderItemId == orderItemId).ToListAsync();
+            Toppings = await _context.Toppings.ToListAsync();
+
+            Beverages = await _context.Beverage.ToListAsync();
+            BeverageOrders = await _context.BeverageOrder.Where(o => o.OrderItemId == orderItemId).ToListAsync();
+
+            Sides = await _context.Side.ToListAsync();
+            SideOrders = await _context.SideOrder.Where(s => s.OrderItemId == orderItemId).ToListAsync();
 
             if (Orders == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
 

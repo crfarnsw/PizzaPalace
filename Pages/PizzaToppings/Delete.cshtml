@@ -1,0 +1,28 @@
+﻿@page
+@model PizzaPalace.Pages.PizzaToppings.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to remove this item?</h3>
+<div>
+    <h4>PizzaToppings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PizzaToppings.Topping)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PizzaToppings.Topping.ToppingName)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="PizzaToppings.PizzaToppingId" />
+        <input type="submit" value="Delete" class="btn btn-default" />
+    </form>
+</div>

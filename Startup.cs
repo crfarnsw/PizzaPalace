@@ -47,7 +47,14 @@ namespace PizzaPalace
             services.AddScoped<IUserService, UserService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/");
+                options.Conventions.AllowAnonymousToPage("/Index");
+                options.Conventions.AllowAnonymousToPage("/Login");
+                options.Conventions.AllowAnonymousToPage("/Customer/Create");
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession();
 
