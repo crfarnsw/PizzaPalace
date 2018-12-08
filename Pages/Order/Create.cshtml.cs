@@ -18,6 +18,10 @@
             _context = context;
         }
 
+        /// <summary>
+        ///  Puts the customers customerid and all gets all stores into the ViewData[] so we can add this information to the order.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnGet()
         {
             ViewData["CustomerId"] = _context.Customer.FirstOrDefault(u => u.Email == User.Identity.Name).CustomerId;
@@ -25,11 +29,18 @@
             return Page();
         }
 
+        /// <summary>
+        /// Set Orders as a bind property so we can retrieve the data from the inputs in the Create.cshtml page
+        /// </summary>
         [BindProperty]
         public Orders Orders { get; set; }
-
+        
         public OrderItem OrderItem = new OrderItem();
 
+        /// <summary>
+        /// Creates a new order and creates a new OrderItem 
+        /// </summary>
+        /// <returns>Redirects to the newly created order details</returns>
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -37,13 +48,17 @@
                 return Page();
             }
 
+            // Add order to the database
             _context.Orders.Add(Orders);
 
+            // Commit the transaction to the database
             _context.SaveChanges();
 
+            // Set the newly created Order as the OrderItem's OrderId
             int id = Orders.OrderId;
             OrderItem.OrderId = id;
 
+            // Add orderItem to the database
             _context.OrderItem.Add(OrderItem);
 
             _context.SaveChanges();

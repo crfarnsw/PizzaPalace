@@ -14,9 +14,9 @@ namespace PizzaPalace.Pages.Customer
 
     public class CreateModel : PageModel
     {
-        private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
+        private readonly PizzaPalacedbContext _context;
 
-        public CreateModel(PizzaPalace.Models.PizzaPalacedbContext context)
+        public CreateModel(PizzaPalacedbContext context)
         {
             _context = context;
         }
@@ -29,6 +29,10 @@ namespace PizzaPalace.Pages.Customer
         [BindProperty]
         public Customer Customer { get; set; }
 
+        /// <summary>
+        /// Creates a new customer in the database. Hashes the password using Bcrypt.Net library.
+        /// </summary>
+        /// <returns>Returns the login page once the customer has registered.</returns>
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

@@ -9,13 +9,13 @@ using PizzaPalace.Models;
 
 namespace PizzaPalace.Pages.PizzaOrder
 {
-    using PizzaOrder = PizzaPalace.Models.PizzaOrder;
+    using PizzaOrder = Models.PizzaOrder;
 
     public class DeleteModel : PageModel
     {
-        private readonly PizzaPalace.Models.PizzaPalacedbContext _context;
+        private readonly PizzaPalacedbContext _context;
 
-        public DeleteModel(PizzaPalace.Models.PizzaPalacedbContext context)
+        public DeleteModel(PizzaPalacedbContext context)
         {
             _context = context;
         }
@@ -23,6 +23,9 @@ namespace PizzaPalace.Pages.PizzaOrder
         [BindProperty]
         public PizzaOrder PizzaOrder { get; set; }
 
+        /// <summary>
+        /// HTTP GET Get the PizzaOrder which we are deleting.
+        /// </summary>
         public async Task<IActionResult> OnGetAsync(int OrderId, int OrderItemId, int PizzaOrderId)
         {
             PizzaOrder = await _context.PizzaOrder
@@ -35,7 +38,10 @@ namespace PizzaPalace.Pages.PizzaOrder
             }
             return Page();
         }
-
+        
+        /// <summary>
+        /// HTTP POST Delete the PizzaOrder and redirect to the OrderDetails page.
+        /// </summary>
         public async Task<IActionResult> OnPostAsync(int OrderId, int OrderItemId, int PizzaOrderId)
         {
             PizzaOrder = await _context.PizzaOrder.FindAsync(PizzaOrderId);

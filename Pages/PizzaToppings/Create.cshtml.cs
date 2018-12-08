@@ -25,7 +25,10 @@ namespace PizzaPalace.Pages.PizzaToppings
         {
             _context = context;
         }
-
+        
+        /// <summary>
+        /// Retrieve the data we need so we can populate the form and bind it.
+        /// </summary>
         public async Task<IActionResult> OnGetAsync(int OrderId, int OrderItemId, int pizzaOrderId)
         {
             ViewData["OrderId"] = OrderId;
@@ -45,6 +48,9 @@ namespace PizzaPalace.Pages.PizzaToppings
         [BindProperty]
         public PizzaToppings PizzaToppings { get; set; }
 
+        /// <summary>
+        /// Save the data into the database on POST, redirect back to the OrderDetails page.
+        /// </summary>
         public async Task<IActionResult> OnPostAsync(int OrderId, int OrderItemId, int pizzaOrderId)
         {
             if (!ModelState.IsValid)

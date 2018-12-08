@@ -27,6 +27,9 @@ namespace PizzaPalace.Pages.PizzaToppings
         [BindProperty]
         public PizzaToppings PizzaToppings { get; set; }
 
+        /// <summary>
+        /// Get PizzaTopping by the PizzaToppingId and related data from database on HTTP GET
+        /// </summary>
         public async Task<IActionResult> OnGetAsync(int OrderId, int OrderItemId, int PizzaToppingId)
         {
             PizzaToppings = await _context.PizzaToppings
@@ -44,6 +47,10 @@ namespace PizzaPalace.Pages.PizzaToppings
             return Page();
         }
 
+
+        /// <summary>
+        /// Remove PizzaTopping from the database on POST
+        /// </summary>
         public async Task<IActionResult> OnPostAsync(int OrderId, int OrderItemId, int PizzaToppingId)
         {
             PizzaToppings = await _context.PizzaToppings.FindAsync(PizzaToppingId);

@@ -37,6 +37,12 @@ namespace PizzaPalace.Pages.PizzaOrder
         [BindProperty]
         public PizzaOrder PizzaOrder { get; set; }
 
+        /// <summary>
+        /// Add the new PizzaOrder to the database 
+        /// </summary>
+        /// <param name="OrderId"></param>
+        /// <param name="OrderItemId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync(int OrderId, int OrderItemId)
         {
             if (!ModelState.IsValid)

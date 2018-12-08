@@ -38,6 +38,12 @@ namespace PizzaPalace.Pages.Order
 
         public string name { get; set; }
 
+        /// <summary>
+        /// On HTTPGet retrieve any objects associated with the OrderId and orderitem and set them here.
+        /// </summary>
+        /// <param name="OrderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync(int? OrderId, int? orderItemId)
         {
             if (OrderId == null)
@@ -48,6 +54,12 @@ namespace PizzaPalace.Pages.Order
             var identity = User.Identity;
             name = identity.Name;
 
+            // All queries written in LINQ Here is an example SQL query of the below LINQ for reference 
+            // SELECT * FROM Orders order
+            // LEFT JOIN Customer customer on order.CustomerId = customer.CustomerId
+            // LEFT JOIN OrderItem item on order.OrderId = item.OrderId
+            // LEFT JOIN Store store on order.StoreId=Store.StoreId
+            // WHERE @OrderId=o.OrderId
             Orders = await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.OrderItem)
@@ -63,6 +75,7 @@ namespace PizzaPalace.Pages.Order
             PizzaOrder = await _context.PizzaOrder
                 .Include(p => p.PizzaToppings)
                 .Where(p => p.OrderItemId == orderItemId).ToListAsync();
+
             Toppings = await _context.Toppings.ToListAsync();
 
             Beverages = await _context.Beverage.ToListAsync();
@@ -81,17 +94,6 @@ namespace PizzaPalace.Pages.Order
 
         public async Task<IActionResult> OnPostAsync(int OrderItemId)
         {
-            int pizzaId = 0;
-
-            PizzaOrder pizzaOrder = new PizzaOrder
-            {
-                PizzaId = pizzaId,
-                OrderItemId = OrderItemId
-            };
-
-            _context.PizzaOrder.Add(pizzaOrder);
-            _context.SaveChanges();
-
             return Page();
         }
     }

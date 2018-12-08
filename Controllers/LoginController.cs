@@ -29,6 +29,11 @@ namespace PizzaPalace.Controllers
             return View();
         }
         
+        /// <summary>
+        /// Logs the user in using using asp.net cookie authentication and decrypts their password using BCrypt.Net
+        /// </summary>
+        /// <param name="data">Parameter is the data object Customer from the form inputs on the login.cshtml page.</param>
+        /// <returns>To the home page. (index.cshtml)</returns>
         [AllowAnonymous]
         [HttpPost("~/login")]
         public async Task<IActionResult> Login(Customer data)
@@ -62,6 +67,10 @@ namespace PizzaPalace.Controllers
             return LocalRedirect(returnUrl);
         }
 
+        /// <summary>
+        /// Logs the user out.
+        /// </summary>
+        /// <returns>Returns them to the login page. Couldn't get this to work for some reason..</returns>
         [HttpPost("~/logout")]
         public async Task<IActionResult> Logout()
         {
